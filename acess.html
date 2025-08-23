@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the fitness tore (plate)</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        .head {
+            height: 100px;
+            width: 100%;
+            background-color: red;
+            color: white;
+        }
+
+        .con {
+            position: absolute;
+            left: 15%;
+            top: 2%;
+            width: 70%;
+            font-size: 20px;
+        }
+
+        .balckbar {
+            height: 150px;
+            width: 100%;
+            background-color: black;
+            position: absolute;
+            top: 10%;
+        }
+
+        .logo {
+            position: absolute;
+            top: 15%;
+            left: 2%;
+            height: 100px;
+            width: 200px;
+
+        }
+
+        nav {
+            background: #000;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            position: relative;
+            display: inline-block;
+        }
+
+        ul li a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
+
+        ul li:hover {
+            background: #333;
+        }
+
+
+        ul li ul {
+            display: none;
+            position: absolute;
+            background: white;
+            color: black;
+            min-width: 200px;
+            top: 100%;
+            left: 0;
+            z-index: 999;
+        }
+
+        ul li:hover>ul {
+            display: block;
+        }
+
+        ul li ul li {
+            display: block;
+        }
+
+        ul li ul li a {
+            color: black;
+        }
+
+        ul li ul li:hover {
+            background: #eee;
+        }
+
+        ul li ul li ul {
+            left: 100%;
+            top: 0;
+            display: none;
+        }
+
+        ul li ul li:hover>ul {
+            display: block;
+        }
+
+        .form {
+            position: absolute;
+            color: white;
+            left: 80%;
+            top: 22%;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s ease;
+        }
+
+
+        /* from here 1st row css */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+            margin-top: 10%;
+        }
+
+        .product-card {
+            border: 1px solid #eee;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .discount {
+            position: relative;
+            background-color: #00b3b3;
+            color: white;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .price {
+            color: #f00;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: gray;
+            font-size: 14px;
+            margin-right: 8px;
+        }
+
+        .add-to-cart {
+            margin-top: 10px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        
+    footer {
+      background-color: #000;
+      color: white;
+      padding: 40px 20px;
+      margin-top: 5%;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+      border-bottom: 1px solid #444;
+      padding-bottom: 40px;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 15px;
+      font-size: 16px;
+      text-transform: uppercase;
+      border-bottom: 2px solid white;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: #ccc;
+      font-size: 14px;
+      line-height: 1.8;
+      text-decoration: none;
+      display: block;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-logo {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .footer-logo img {
+      width: 150px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .footer-bottom span {
+      display: block;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .footer-container {
+        text-align: center;
+      }
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="head">
+        <p class="con">1/23/25 NEW PRODUCT ANNOUNCEMENT! TheFitnessStore.com has become an authorized
+            PowerBlock dealer! You will find PowerBlock products on our site and in our store.
+            For the finest selectorized dumbbells, kettlebells and barbells,
+            there's only one name - PowerBlock!</p>
+    </div>
+
+    <div class="balckbar">
+        <img src="images/logo.png" alt="" class="logo">
+
+
+        <a href="loginform.html"><i class="form">login/register</i></a>
+
+        <!-- 1 TAB -->
+        <nav>
+            <ul style="position: absolute; left: 20%; font-size: 15px; top: 20%;">
+                <li><a href="index.html">CARDIO ></a>
+                    <ul>
+                        <li><a href="#">HOME EQUIPMENT BY TYPE</a>
+                            <ul>
+                                <li><a href="#">Elliptical Machines</a></li>
+                                <li><a href="#">Inversion</a></li>
+                                <li><a href="#">Upright Bikes</a></li>
+                                <li><a href="#">Recumbent Bikes</a></li>
+                                <li><a href="#">Rowing Machines</a></li>
+                                <li><a href="#">Recumbent Steppers</a></li>
+                                <li><a href="#">Treadmills</a></li>
+                                <li><a href="#">Cycle Trainers</a></li>
+                            </ul>
+                        </li>
+                        <!-- first -->
+                        <li><a href="#">HOME EQUIPMENT BY BRAND</a>
+                            <ul>
+                                <li><a href="#">BODY CRAFTS</a></li>
+                                <li><a href="#">ECHELON FITNESS</a></li>
+                                <li><a href="#">ENDURANCE</a></li>
+                                <li><a href="#">LIFRDICE</a></li>
+                                <li><a href="#">LIFE FITNESS</a></li>
+                                <li><a href="#">NAUTILUS </a></li>
+                                <li><a href="#">SARISS</a></li>
+                                <li><a href="#">SCHWINN</a></li>
+                                <li><a href="#">SIPIRIT</a></li>
+                                <li><a href="#">TEETER</a></li>
+                                <li><a href="#">WATERROWER</a></li>
+                                <li><a href="#">UNIVERSAL HOME GYM EQUIPMENT</a></li>
+                            </ul>
+                        </li>
+                        <!-- second -->
+                        <li><a href="#">COMMERICIAL EQUIPMENT BY TYPE</a>
+                            <ul>
+                                <li><a href="#">ROWERS</a></li>
+                                <li><a href="#">ELLIPITICAL MACHINES</a></li>
+                                <li><a href="#">UPRIGHT BIKES</a></li>
+                                <li><a href="#">RECUMENT BIKES</a></li>
+                                <li><a href="#">RECUMENT STEEPERS</a></li>
+                                <li><a href="#">STEEPERS </a></li>
+                                <li><a href="#">TREADMILSS</a></li>
+
+                            </ul>
+                        </li>
+                        <!-- third -->
+                        <li><a href="#">COMMERCIAL EQUIPMENT BY BRAND</a>
+                            <ul>
+                                <li><a href="#"> BODY CRAFT</a></li>
+                                <li><a href="#">ECHELON FITNESS </a></li>
+                                <li><a href="#"> ENDURANCE</a></li>
+                                <li><a href="#">LANDICE FITNESS</a></li>
+                                <li><a href="#"> SCHWINN FITNESS</a></li>
+                                <li><a href="#"> SPIRIT FITNESS</a></li>
+                                <li><a href="#"> WATER ROWER</a></li>
+
+                            </ul>
+                        </li>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </nav>
+
+        <!-- SCEOND TAB -->
+        <nav>
+            <ul style="position: absolute; left: 28%; font-size: 15px; top: 20%;">
+                <li><a href="gymstystems.html">GYM SYSTEMS ></a>
+                    <ul>
+                        <li><a href="#">BODY SOLID COLLECTIONS</a>
+                            <ul>
+                                <li><a href="#"> BENCHES</a></li>
+                                <li><a href="#"> SINGLE STATION Machines</a></li>
+                                <li><a href="#"> DUAL STATION Machines</a></li>
+                                <li><a href="#">MULTI STATTION GYMS</a></li>
+
+                            </ul>
+                        </li>
+                        <!-- first -->
+                        <li><a href="#">INFLIGHT FITNESS COLLECTIONS</a></li>
+                        <!-- second -->
+                        <li><a href="#">PARADIGM FITNESS COLLECTIONS</a></li>
+                        <!-- third -->
+                        <li><a href="#">BODY CRAFT FITNESS COLLECTION </a></li>
+                        <!-- FOURTH -->
+                        <li><a href="#">SIPIRIT FITNESS COMMERCIAL COLLECTION </a></li>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </nav>
+
+        <!-- 3 TAB -->
+        <nav>
+            <ul style="position: absolute; left: 38%; font-size: 15px; top: 20%;">
+                <li><a href="#">PLATE LOADED></a>
+                    <ul>
+                        <li><a href="#">BODY SOLID COLLECTIONS</a></li>
+                        <!-- first -->
+                        <li><a href="#">PARADGIM FITNESS COLLECTION</a></li>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </nav>
+
+        <!-- 4 TAB -->
+        <nav>
+            <ul style="position: absolute; left: 48%; font-size: 15px; top: 20%;">
+                <li><a href="free.html">FREE WEIGHTS ></a>
+                    <ul>
+                        <li><a href="#">DUMBELLS</a></li>
+                        <!-- first -->
+                        <li><a href="#">OLYMPIC PLATES AND STES</a></li>
+                        <!-- second -->
+                        <li><a href="#">KETILEBELLS</a></li>
+                        <!-- third -->
+                        <li><a href="#">BARS AND COLLARS </a></li>
+                        <!-- FOURTH -->
+                        <li><a href="#">POWERBLOACK SELECTORIZED DUMBBEELLS, KEETTLIBELLS AND BARBELLS</a></li>
+                        <!-- FIFTH  -->
+                        <li><a href="#">BENCHES</a></li>
+                        <!-- SIXTH -->
+                        <li><a href="#">STORAGE</a></li>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </nav>
+
+        <!--  5 TAB -->
+        <nav>
+            <ul style="position: absolute; left: 58%; font-size: 15px; top: 20%;">
+                <li><a href="acess.html">ACCESSORIES ></a>
+                    <ul>
+                        <li><a href="#">ACCESSORIES BY TYPE</a>
+                            <ul>
+                                <li><a href="#"> LIFITING GLOVES</a></li>
+                                <li><a href="#"> LIFITING BELTS</a></li>
+                                <li><a href="#"> LIFITING STRAPS</a></li>
+                                <li><a href="#"> SPORTS MEDIACAL</a></li>
+                                <li><a href="#"> JUMP ROPES</a></li>
+                                <li><a href="#"> BALLS- BOSU EXERCISE ,SLAM ,WALL, MEDICINE </a></li>
+                                <li><a href="#"> FOAM ROLLAERS</a></li>
+                                <li><a href="#"> FITNESS MATS</a></li>
+                                <li><a href="#"> FITNESS CLEANING SUPPLIES</a></li>
+                                <li><a href="#"> CABLE ATTACHMENTS</a></li>
+                                <li><a href="#"> FITNESS CLOTHING</a></li>
+
+                            </ul>
+                        </li>
+                        <!-- first -->
+                        <li><a href="#">ACCESSORIES BY BRAND</a>
+                            <ul>
+                                <li><a href="#"> VALEO PRODUCTS</a></li>
+                                <li><a href="#"> GRIZZILY FITNESS PRODUCTS </a></li>
+                                <li><a href="#">WEAK BALANECE AND BOSU BALACE TRAINERS</a></li>
+                                <li><a href="#"> SPRI PRODUCTS</a></li>
+                                <li><a href="#"> SCHIEK PRODUCTS</a></li>
+                                <li><a href="#">HARBINGER FITNESS PRODUCTS </a></li>
+
+                            </ul>
+                        </li>
+                        <!-- second -->
+                        <li><a href="#">FITNESS POSTERS / BOOKES</a>
+                            <ul>
+                                <li><a href="#"> BRUCE ALGRA</a></li>
+                                <li><a href="#"> FIGHTFITNESS TRHOUGH </a></li>
+                                <li><a href="#">PRODUCTIVE FITNESS PRODUCTS</a></li>
+
+                            </ul>
+                        </li>
+                        <!-- third -->
+                        <li><a href="#">MISCLLEANEOUS ACCESSORIES</a></li>
+                        <!-- FOURTH -->
+                        <li><a href="#">SIPIRIT FITNESS COMMERCIAL COLLECTION </a></li>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </nav>
+
+        <!-- 6 tab -->
+
+        <nav>
+            <ul style="position: absolute; left: 68%; font-size: 15px; top: 20%;">
+                <li><a href="bycycle.html">BYCICLES ></a>
+                    <ul>
+                        <li><a href="#">BYCICLES LINES CARRIED</a></li>
+                        <!-- first -->
+                        <li><a href="#">CLASSIC HIGH WHEELERS</a> </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+
+
+
+
+        <!-- 1st row of images-->
+        <!-- <div class="row1">
+            <img src="images/gym1.webp" alt="" style="height: 350px; width: 356px; margin-left: 5%;  margin-top:7%;">
+              <img src="images/gym2.webp" alt="" style="height: 350px; width: 356px; margin-left: 5%;  margin-top:7%;">
+               <img src="images/gym3.webp" alt="" style="height: 350px; width: 356px; margin-left: 0%;  margin-top:7%;">
+                <img src="images/gym4.webp" alt="" style="height: 350px; width: 356px; margin-left: 2%;  margin-top:7%;">
+                
+         </div> -->
+
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="discount" style="margin-left: 13%; margin-top: 15%;"> -20%</div>
+                <a href="instru1.html"><img src="images/acc1.webp" alt="Product 1" class="product-image"></a>
+                <div class="product-name">PowerLine Incline/Decline Bench</div>
+                <div class="add-to-cart">Add to cart</div>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 31%; margin-top: 15%;">-17%</div>
+                <a href="instru2.html"><img src="images/acc2.webp" alt="Product 2" class="product-image"></a>
+                <div class="product-name">PowerLine Power Rack</div>
+                <span class="old-price">$495.00</span><span class="price">$415.00</span>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 50%; margin-top: 15%;">-14%</div>
+                <a href="instru3.html"><img src="images/acc3.webp" alt="Product 3" class="product-image"></a>
+                <div class="product-name">2.5lb Add-on Weight</div>
+                <span class="old-price">$14.95</span><span class="price">$12.95</span>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 68%; margin-top: 15%;">-21%</div>
+                <a href="instru4.html"><img src="images/acc4.webp" alt="Product 4" class="product-image"></a>
+                <div class="product-name">Body-Solid SPR500 Half Rack</div>
+                <span class="old-price">$870.00</span><span class="price">$690.00</span>
+            </div>
+
+            <!-- 2row  -->
+            <div class="product-card">
+                <div class="discount" style="margin-left: 31%; margin-top: 39%;"> -20%</div>
+                <a  href="instru5.html"><img src="images/acc5.webp" alt="Product 1" class="product-image"></a>
+                <div class="product-name">PowerLine Incline/Decline Bench</div>
+                <div class="add-to-cart">Add to cart</div>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 13%; margin-top: 39%;">-17%</div>
+                <img src="images/acc6.webp" alt="Product 2" class="product-image">
+                <div class="product-name">PowerLine Power Rack</div>
+                <span class="old-price">$495.00</span><span class="price">$415.00</span>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 68%; margin-top: 39%;">-14%</div>
+                <img src="images/acc7.webp" alt="Product 3" class="product-image">
+                <div class="product-name">2.5lb Add-on Weight</div>
+                <span class="old-price">$14.95</span><span class="price">$12.95</span>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 50%; margin-top: 39%;">-21%</div>
+                <img src="images/acc8.webp" alt="Product 4" class="product-image">
+                <div class="product-name">Body-Solid SPR500 Half Rack</div>
+                <span class="old-price">$870.00</span><span class="price">$690.00</span>
+            </div>
+
+            <!-- 3row -->
+            <div class="product-card">
+                <div class="discount" style="margin-left: 31%; margin-top: 62%;"> -20%</div>
+                <img src="images/acc9.webp" alt="Product 1" class="product-image">
+                <div class="product-name">PowerLine Incline/Decline Bench</div>
+                <div class="add-to-cart">Add to cart</div>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 68%; margin-top: 62%;">-17%</div>
+                <img src="images/acc10.webp" alt="Product 2" class="product-image">
+                <div class="product-name">PowerLine Power Rack</div>
+                <span class="old-price">$495.00</span><span class="price">$415.00</span>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 13%; margin-top: 62%;">-14%</div>
+                <img src="images/acc11.webp" alt="Product 3" class="product-image">
+                <div class="product-name">2.5lb Add-on Weight</div>
+                <span class="old-price">$14.95</span><span class="price">$12.95</span>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 50%; margin-top: 62%;">-21%</div>
+                <img src="images/acc12.webp" alt="Product 4" class="product-image">
+                <div class="product-name">Body-Solid SPR500 Half Rack</div>
+                <span class="old-price">$870.00</span><span class="price">$690.00</span>
+            </div>
+
+            <!-- 4th row -->
+
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 31%; margin-top: 85%;"> -20%</div>
+                <img src="images/acc13.webp" alt="Product 1" class="product-image">
+                <div class="product-name">PowerLine Incline/Decline Bench</div>
+                <div class="add-to-cart">Add to cart</div>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 68%; margin-top: 85%;">-17%</div>
+                <img src="images/acc14.webp" alt="Product 2" class="product-image">
+                <div class="product-name">PowerLine Power Rack</div>
+                <span class="old-price">$495.00</span><span class="price">$415.00</span>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 13%; margin-top: 85%;">-14%</div>
+                <img src="images/acc15.webp" alt="Product 3" class="product-image">
+                <div class="product-name">2.5lb Add-on Weight</div>
+                <span class="old-price">$14.95</span><span class="price">$12.95</span>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 50%; margin-top: 85%;">-21%</div>
+                <img src="images/acc16.webp" alt="Product 4" class="product-image">
+                <div class="product-name">Body-Solid SPR500 Half Rack</div>
+                <span class="old-price">$870.00</span><span class="price">$690.00</span>
+            </div>
+
+            <!-- 5th row -->
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 31%; margin-top: 109%;"> -20%</div>
+                <img src="images/acc17.webp" alt="Product 1" class="product-image">
+                <div class="product-name">PowerLine Incline/Decline Bench</div>
+                <div class="add-to-cart">Add to cart</div>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 68%; margin-top: 109%;">-17%</div>
+                <img src="images/acc18.webp" alt="Product 2" class="product-image">
+                <div class="product-name">PowerLine Power Rack</div>
+                <span class="old-price">$495.00</span><span class="price">$415.00</span>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 13%; margin-top: 109%;">-14%</div>
+                <img src="images/acc19.webp" alt="Product 3" class="product-image">
+                <div class="product-name">2.5lb Add-on Weight</div>
+                <span class="old-price">$14.95</span><span class="price">$12.95</span>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 50%; margin-top: 109%;">-21%</div>
+                <img src="images/acc20.webp" alt="Product 4" class="product-image">
+                <div class="product-name">Body-Solid SPR500 Half Rack</div>
+                <span class="old-price">$870.00</span><span class="price">$690.00</span>
+            </div>
+
+            <!-- 6th row -->
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 31%; margin-top: 132%;"> -20%</div>
+                <img src="images/acc21.jpg" alt="Product 1" class="product-image">
+                <div class="product-name">PowerLine Incline/Decline Bench</div>
+                <div class="add-to-cart">Add to cart</div>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 68%; margin-top: 132%;">-17%</div>
+                <img src="images/acc22.webp" alt="Product 2" class="product-image">
+                <div class="product-name">PowerLine Power Rack</div>
+                <span class="old-price">$495.00</span><span class="price">$415.00</span>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 13%; margin-top: 132%;">-14%</div>
+                <img src="images/acc24.png" alt="Product 3" class="product-image">
+                <div class="product-name">2.5lb Add-on Weight</div>
+                <span class="old-price">$14.95</span><span class="price">$12.95</span>
+            </div>
+
+            <div class="product-card">
+                <div class="discount" style="margin-left: 50%; margin-top: 132%;">-21%</div>
+                <img src="images/acc25.webp" alt="Product 4" class="product-image">
+                <div class="product-name">Body-Solid SPR500 Half Rack</div>
+                <span class="old-price">$870.00</span><span class="price">$690.00</span>
+            </div>
+        </div>
+
+        <!-- footer -->
+         <footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Our Location</h4>
+      <p><strong>The Fitness Store</strong><br>
+      1410 Dewey St.<br>
+      Manitowoc, WI 54220<br>
+      Phone: 920-684-8088<br>
+      (Email recommended)</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Information</h4>
+      <a href="#">Bicycles</a>
+      <a href="#">Blog</a>
+      <a href="#">Virtual Store Tour</a>
+      <a href="#">Manitowoc, WI Video</a>
+      <a href="#">About Us</a>
+      <a href="#">Customer Service</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Orders and Returns</a>
+      <a href="#">Contact Us</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Why Buy From Us</h4>
+      <a href="#">Shipping & Returns</a>
+      <a href="#">Secure Shopping</a>
+      <a href="#">International Shipping</a>
+      <a href="#">Affiliates</a>
+      <a href="#">Group Sales</a>
+      <a href="#">Terms of Service</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>My Account</h4>
+      <a href="#">Login / Register</a>
+      <a href="#">View Cart</a>
+      <a href="#">Track My Order</a>
+      <a href="#">Help</a>
+    </div>
+  </div>
+
+  <div class="footer-logo">
+    <img src="images/logo.png" alt="Fitness Store Logo">
+  </div>
+
+  <div class="footer-bottom">
+    <p>Copyright © 2023 The Fitness Store. All Rights Reserved.</p>
+    <span>
+      We’re committed to making our products and services accessible to everyone, including people with disabilities.
+      If you need an accommodation or request for auxiliary aids or services, please contact us via email at
+      <a href="#" style="color:#eee;">john@thefitnessstore.com</a>. We will consider all requests.
+    </span>
+  </div>
+</footer>
+</body>
+
+</html>
